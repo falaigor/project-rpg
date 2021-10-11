@@ -29,6 +29,7 @@ export function Feed() {
       setPublications(response.data);
     });
   }, []);
+
   return (
     <>
       {publications.map((publication) => (

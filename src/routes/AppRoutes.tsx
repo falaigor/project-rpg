@@ -1,9 +1,10 @@
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { AppRoute } from "./routes";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Home from "Views/Home";
-import Podcast from "Views/Podcast";
 import Lives from "Views/Lives";
+import Podcast from "Views/Podcast";
+import Publication from "Views/Publication";
 
 export default function AppRoutes() {
   return (
@@ -12,6 +13,8 @@ export default function AppRoutes() {
         <Route path="/" exact component={Home} />
         <Route path={AppRoute.Podcasts} component={Podcast} />
         <Route path={AppRoute.Lives} component={Lives} />
+
+        <Route path={`${AppRoute.Publication}/:id`} component={Publication} />
       </Switch>
     </BrowserRouter>
   );
