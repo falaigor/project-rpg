@@ -5,9 +5,11 @@
       "Assets/*": ["./src/assets/*"],
       "Components/*": ["./src/components/*"],
       "Configs/*": ["./src/configs/*"],
+      "Hooks/*": ["./src/hooks/*"],
       "Routes/*": ["./src/routes/*"],
       "Services/*": ["./src/services/*"],
       "Styles/*": ["./src/styles/*"],
+      "Utils/*": ["./src/utils/*"],
       "Views/*": ["./src/views/*"],
     }
   }

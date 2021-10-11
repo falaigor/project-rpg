@@ -67,8 +67,6 @@ export const Publication = () => {
     );
   }
 
-  console.log(publication);
-
   const imagemUrl = config.gatewayUrl + publication.image.url;
 
   return (
