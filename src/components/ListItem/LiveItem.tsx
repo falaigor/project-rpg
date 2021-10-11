@@ -1,6 +1,14 @@
-import { Box, Flex, Image, Link, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Image,
+  Link,
+  Stack,
+  Text,
+  useColorMode,
+} from "@chakra-ui/react";
 import config from "Configs/config.json";
-import { FiTwitch, FiYoutube } from "react-icons/fi";
+import { FiTwitch, FiYoutube, FiGlobe } from "react-icons/fi";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
@@ -24,9 +32,15 @@ export const LiveItem = ({
   site,
 }: LiveItemProps) => {
   const imagemUrl = config.gatewayUrl + image.url;
+  const { colorMode } = useColorMode();
 
   return (
-    <Stack background="gray.700" borderRadius="lg" p="3" mb="5">
+    <Stack
+      background={colorMode === "light" ? "gray.10" : "gray.700"}
+      borderRadius="lg"
+      p="3"
+      mb="5"
+    >
       <Flex w="100%" m="0 auto">
         <Flex w="100%" maxW={200}>
           <Stack width="100%" maxW={250} borderRadius="lg">
@@ -66,7 +80,7 @@ export const LiveItem = ({
                     justifyContent="center"
                     alignItems="center"
                     borderRadius="lg"
-                    bg="gray.600"
+                    bg={colorMode === "light" ? "gray.20" : "gray.600"}
                     p="2"
                     mr="3"
                   >
@@ -82,7 +96,7 @@ export const LiveItem = ({
                     justifyContent="center"
                     alignItems="center"
                     borderRadius="lg"
-                    bg="gray.600"
+                    bg={colorMode === "light" ? "gray.20" : "gray.600"}
                     p="2"
                     mr="3"
                   >
@@ -98,10 +112,11 @@ export const LiveItem = ({
                     justifyContent="center"
                     alignItems="center"
                     borderRadius="lg"
-                    bg="gray.600"
+                    bg={colorMode === "light" ? "gray.20" : "gray.600"}
                     p="2"
                     mr="3"
                   >
+                    <FiGlobe />
                     <Text ml="2">Site</Text>
                   </Flex>
                 </NewLink>

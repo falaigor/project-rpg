@@ -1,4 +1,4 @@
-import { Badge, Box, Flex, Image, Stack } from "@chakra-ui/react";
+import { Badge, Box, Flex, Image, Stack, useColorMode } from "@chakra-ui/react";
 import config from "Configs/config.json";
 
 interface PodcastItemProps {
@@ -15,9 +15,15 @@ export const PodcastItem = ({
   image,
 }: PodcastItemProps) => {
   const imagemurl = config.gatewayUrl + image.url;
+  const { colorMode } = useColorMode();
 
   return (
-    <Stack background="gray.700" borderRadius="lg" p="3" mb="5">
+    <Stack
+      background={colorMode === "light" ? "gray.10" : "gray.700"}
+      borderRadius="lg"
+      p="3"
+      mb="5"
+    >
       <Flex w="100%" m="0 auto">
         <Flex w="100%" maxW={200}>
           <Stack width="100%" maxW={250} borderRadius="lg">
@@ -33,16 +39,6 @@ export const PodcastItem = ({
         <Flex>
           <Stack>
             <Box px="6">
-              <Box d="flex" alignItems="baseline">
-                <Badge borderRadius="4px" px="2" mr="2" bg="purple.500">
-                  Terror
-                </Badge>
-
-                <Badge borderRadius="4px" px="2" mr="2" bg="orange.500">
-                  Genero
-                </Badge>
-              </Box>
-
               <Box
                 mt="3"
                 fontWeight="semibold"
