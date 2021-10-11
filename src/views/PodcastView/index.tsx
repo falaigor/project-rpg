@@ -1,12 +1,12 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { LIVES_LIST } from "Services/gatewayRoutes";
+import { PODCASTS_LIST } from "Services/gatewayRoutes";
 import { Box, Stack, Heading, Text, Flex } from "@chakra-ui/react";
-import { LiveItem } from "Components/ListItem";
+import { PodcastItem } from "./components/Item";
 import { Header } from "Components/Header";
 import { Sidebar } from "Components/Sidebar";
 
-interface LivesProps {
+interface PodcastProps {
   id: number;
   slug: string;
   title: string;
@@ -16,12 +16,12 @@ interface LivesProps {
   };
 }
 
-export default function Lives() {
-  const [lives, setLives] = useState<LivesProps[]>([]);
+export default function PodcastView() {
+  const [podcasts, setPodcasts] = useState<PodcastProps[]>([]);
 
   useEffect(() => {
-    axios.get(LIVES_LIST).then((response) => {
-      setLives(response.data);
+    axios.get(PODCASTS_LIST).then((response) => {
+      setPodcasts(response.data);
     });
   }, []);
 
@@ -34,12 +34,12 @@ export default function Lives() {
         <Stack>
           <Box pb="10">
             <Text fontSize="xl">Lista de</Text>
-            <Heading>Lives</Heading>
+            <Heading>Podcasts</Heading>
           </Box>
 
           <Box width="100%" maxWidth={1000} mx="auto">
-            {lives.map((live) => (
-              <LiveItem key={live.id} {...live} />
+            {podcasts.map((podcast) => (
+              <PodcastItem key={podcast.id} {...podcast} />
             ))}
           </Box>
         </Stack>

@@ -1,4 +1,4 @@
-import { Badge, Box, Flex, Image, Stack, useColorMode } from "@chakra-ui/react";
+import { Box, Flex, Image, Stack, useColorMode } from "@chakra-ui/react";
 import config from "Configs/config.json";
 
 interface PodcastItemProps {

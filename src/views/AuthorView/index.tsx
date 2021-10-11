@@ -1,9 +1,8 @@
 import { Flex, Stack, Box } from "@chakra-ui/react";
 import { Header } from "Components/Header";
 import { Sidebar } from "Components/Sidebar";
-import { Publication as PublicationItem } from "Components/Publication";
 
-export default function Publication() {
+export default function AuthorView() {
   return (
     <Flex direction="column" h="100vh">
       <Header />
@@ -11,9 +10,7 @@ export default function Publication() {
         <Sidebar />
 
         <Stack>
-          <Box width="100%" maxWidth={1000} mx="auto">
-            <PublicationItem />
-          </Box>
+          <Box width="100%" maxWidth={1000} mx="auto"></Box>
         </Stack>
       </Flex>
     </Flex>
