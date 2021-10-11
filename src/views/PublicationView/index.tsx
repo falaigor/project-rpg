@@ -3,7 +3,7 @@ import { Header } from "Components/Header";
 import { Sidebar } from "Components/Sidebar";
 import { Publication as PublicationItem } from "./components/Publication";
 
-export default function PublicationView() {
+export default function Publication() {
   return (
     <Flex direction="column" h="100vh">
       <Header />

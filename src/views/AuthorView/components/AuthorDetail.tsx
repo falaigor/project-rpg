@@ -1,10 +1,5 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
 import { getImageUrl } from "Utils/urlImage";
 
-import { AUTHOR_FETCH_URL } from "Services/gatewayRoutes";
 import {
   Box,
   Flex,
@@ -14,7 +9,6 @@ import {
   Text,
   Avatar,
   Link,
-  CircularProgress,
   useColorMode,
 } from "@chakra-ui/react";
 
@@ -29,7 +23,6 @@ import {
 import styled from "styled-components";
 
 interface AuthorProps {
-  id: number;
   name: string;
   username: string;
   about: string;
@@ -46,34 +39,19 @@ interface AuthorProps {
   youtube: string;
 }
 
-interface AuthorParams {
-  id: string;
-}
-
-export const AuthorDetail = () => {
-  const [author, setAuthor] = useState<AuthorProps>();
-  const params = useParams<AuthorParams>();
+export const AuthorDetail = ({
+  name,
+  username,
+  about,
+  image,
+  cover,
+  website,
+  facebook,
+  instagram,
+  twitter,
+  youtube,
+}: AuthorProps) => {
   const { colorMode } = useColorMode();
-
-  useEffect(() => {
-    async function getAuthor() {
-      try {
-        let response = await axios.get(AUTHOR_FETCH_URL(params.id));
-        setAuthor(response.data[0]);
-      } catch (e) {
-        console.error(e);
-      }
-    }
-    getAuthor();
-  }, [params.id]);
-
-  if (!author) {
-    return (
-      <Flex w="100%" m="0 auto">
-        <CircularProgress isIndeterminate thickness="5px" color="purple.500" />
-      </Flex>
-    );
-  }
 
   return (
     <Stack
@@ -87,10 +65,10 @@ export const AuthorDetail = () => {
         <Stack width="100%" borderRadius="lg">
           <FlexImage>
             <Image
-              src={getImageUrl(author.cover.url)}
+              src={getImageUrl(cover.url)}
               width="100%"
               borderRadius="0.5rem 0.5rem 0 0"
-              alt={author.name}
+              alt={name}
             />
           </FlexImage>
           <Box px="6">
@@ -98,21 +76,21 @@ export const AuthorDetail = () => {
               <Avatar
                 mr="10px"
                 size="xl"
-                name={author.name}
-                src={getImageUrl(author.image.url)}
+                name={name}
+                src={getImageUrl(image.url)}
                 border="5px solid"
                 color={colorMode === "light" ? "gray.10" : "gray.800"}
               />
 
               <Box>
-                <Text fontSize="1.2rem">{author.name}</Text>
-                <Text>@{author.username}</Text>
+                <Text fontSize="1.2rem">{name}</Text>
+                <Text>@{username}</Text>
               </Box>
             </Flex>
             <Divider
               borderColor={colorMode === "light" ? "gray.20" : "gray.600"}
             />
-            <Flex mt="20px">{author.about}</Flex>
+            <Flex mt="20px">{about}</Flex>
             <Flex mt="20px" fontSize="1.6rem">
               <SocialLink colorMode={colorMode}>
                 <RiFacebookBoxFill />
