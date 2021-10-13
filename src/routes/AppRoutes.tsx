@@ -12,9 +12,9 @@ export default function AppRoutes() {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Home} />
+        <Route path={`/:id`} exact component={AuthorView} />
         <Route path={AppRoute.Podcasts} component={PodcastView} />
         <Route path={AppRoute.Lives} component={LivesView} />
-        <Route path={`/:id`} component={AuthorView} />
 
         <Route
           path={`${AppRoute.Publication}/:id`}

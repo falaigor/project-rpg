@@ -15,6 +15,7 @@ interface PublicationProps {
   };
   author: {
     name: string;
+    username: string;
     image: {
       url: string;
     };

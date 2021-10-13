@@ -2,7 +2,7 @@ import { Box, Flex, Avatar, Text, Link } from "@chakra-ui/react";
 import ReactMarkdown from "react-markdown";
 
 import { getImageUrl } from "Utils/urlImage";
-import { postDate } from "Utils/postDate";
+import { getPostDate } from "Utils/postDate";
 
 import styled from "styled-components";
 
@@ -48,7 +48,7 @@ export const Info = ({
             <div>
               <Text fontSize="1.2rem" mr="10px">{`Igor Santos`}</Text>
               <Text fontSize="0.8rem" color="gray.300">
-                {postDate(published_at)}
+                {getPostDate(published_at)}
               </Text>
             </div>
           </NewLink>

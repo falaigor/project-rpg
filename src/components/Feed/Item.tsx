@@ -18,6 +18,7 @@ interface ItemProps {
   };
   author: {
     name: string;
+    username: string;
     image: {
       url: string;
     };

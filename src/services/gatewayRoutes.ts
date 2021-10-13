@@ -1,4 +1,4 @@
-import config from "./../configs/config.json";
+import config from "Configs/config.json";
 const GATEWAY_BASE_URL = config.gatewayUrl;
 
 export const PODCASTS_LIST = GATEWAY_BASE_URL + "/podcasts";

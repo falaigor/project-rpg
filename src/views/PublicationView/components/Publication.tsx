@@ -1,6 +1,6 @@
 import axios from "axios";
-import config from "Configs/config.json";
 import { useEffect, useState } from "react";
+
 import { useParams } from "react-router-dom";
 import { getImageUrl } from "Utils/urlImage";
 
@@ -57,8 +57,12 @@ export const Publication = () => {
         console.error(e);
       }
     }
+
     getPublication();
   }, [params.id]);
+
+  console.log(!publication);
+  console.log("!publication");
 
   if (!publication) {
     return (

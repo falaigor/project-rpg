@@ -68,8 +68,6 @@ export default function AuthorView() {
     );
   }
 
-  console.log(author.publications);
-
   return (
     <Flex direction="column" h="100vh">
       <Header />

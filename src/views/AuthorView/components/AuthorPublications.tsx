@@ -1,9 +1,13 @@
-import { Box, Flex, Image, Stack, Link, useColorMode } from "@chakra-ui/react";
+import { Box, Flex, Image, Stack, Text, useColorMode } from "@chakra-ui/react";
+
+import { Link } from "react-router-dom";
 import { AppRoute } from "Routes/routes";
 import { getImageUrl } from "Utils/urlImage";
+import { getPostDate } from "Utils/postDate";
+
+import { Actions } from "Components/Feed/Actions";
 
 import styled from "styled-components";
-import { Actions } from "Components/Feed/Actions";
 
 interface AuthorPublicationProps {
   author?: number;
@@ -54,7 +58,6 @@ export const AuthorPublications = ({
                 fontSize="1.6rem"
                 as="h4"
                 lineHeight="tight"
-                isTruncated
               >
                 {title}
               </Box>
@@ -69,7 +72,8 @@ export const AuthorPublications = ({
               </Box>
             </Link>
 
-            <Flex mt="6" justifyContent="flex-end">
+            <Flex mt="6" justifyContent="space-between">
+              <Text>{getPostDate(published_at)}</Text>
               <Actions likes={likes} />
             </Flex>
           </Box>

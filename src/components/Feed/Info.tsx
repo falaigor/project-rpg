@@ -17,7 +17,6 @@ export const Info = ({ slug, title, description }: InfoProps) => {
         fontSize="1.6rem"
         as="h4"
         lineHeight="tight"
-        isTruncated
       >
         {title}
       </Box>
