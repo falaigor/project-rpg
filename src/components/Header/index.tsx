@@ -1,4 +1,5 @@
 import { Flex, Heading } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import { NotificationNav } from "./NotificationNav";
 import { Profile } from "./Profile";
 
@@ -13,11 +14,13 @@ export function Header() {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Flex>
-          <Heading>RPG</Heading>
-          <Heading color="purple.500">.</Heading>
-          <Heading>News</Heading>
-        </Flex>
+        <Link to="/">
+          <Flex>
+            <Heading>RPG</Heading>
+            <Heading color="purple.500">.</Heading>
+            <Heading>News</Heading>
+          </Flex>
+        </Link>
 
         <Flex align="center" ml="auto">
           <NotificationNav />
