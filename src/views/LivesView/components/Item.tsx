@@ -7,8 +7,10 @@ import {
   Text,
   useColorMode,
 } from "@chakra-ui/react";
-import config from "Configs/config.json";
+
+import { getImageUrl } from "Utils/urlImage";
 import { FiTwitch, FiYoutube, FiGlobe } from "react-icons/fi";
+
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
@@ -31,7 +33,6 @@ export const LiveItem = ({
   twitch,
   site,
 }: LiveItemProps) => {
-  const imagemUrl = config.gatewayUrl + image.url;
   const { colorMode } = useColorMode();
 
   return (
@@ -45,7 +46,7 @@ export const LiveItem = ({
         <Flex w="100%" maxW={200}>
           <Stack width="100%" maxW={250} borderRadius="lg">
             <Image
-              src={imagemUrl}
+              src={getImageUrl(image.url)}
               width={200}
               borderRadius="lg"
               alt={description}

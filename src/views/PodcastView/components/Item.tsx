@@ -1,5 +1,5 @@
 import { Box, Flex, Image, Stack, useColorMode } from "@chakra-ui/react";
-import config from "Configs/config.json";
+import { getImageUrl } from "Utils/urlImage";
 
 interface PodcastItemProps {
   title?: string;
@@ -14,7 +14,6 @@ export const PodcastItem = ({
   description,
   image,
 }: PodcastItemProps) => {
-  const imagemurl = config.gatewayUrl + image.url;
   const { colorMode } = useColorMode();
 
   return (
@@ -28,7 +27,7 @@ export const PodcastItem = ({
         <Flex w="100%" maxW={200}>
           <Stack width="100%" maxW={250} borderRadius="lg">
             <Image
-              src={imagemurl}
+              src={getImageUrl(image.url)}
               width={200}
               borderRadius="lg"
               alt={description}

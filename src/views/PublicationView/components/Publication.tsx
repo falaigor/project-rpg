@@ -2,6 +2,7 @@ import axios from "axios";
 import config from "Configs/config.json";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getImageUrl } from "Utils/urlImage";
 
 import { PUBLICATIONS_FETCH_PUBLICATION_URL } from "Services/gatewayRoutes";
 import {
@@ -67,8 +68,6 @@ export const Publication = () => {
     );
   }
 
-  const imagemUrl = config.gatewayUrl + publication.image.url;
-
   return (
     <Stack
       border="1px solid"
@@ -81,7 +80,7 @@ export const Publication = () => {
         <Stack width="100%" borderRadius="lg">
           <FlexImage>
             <Image
-              src={imagemUrl}
+              src={getImageUrl(publication.image.url)}
               width="100%"
               borderRadius="0.5rem 0.5rem 0 0"
               alt={publication.title}

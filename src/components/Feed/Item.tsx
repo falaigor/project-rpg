@@ -1,8 +1,10 @@
 import { Box, Flex, Image, Stack, useColorMode } from "@chakra-ui/react";
-import config from "Configs/config.json";
+import { getImageUrl } from "Utils/urlImage";
+
 import { Actions } from "./Actions";
 import { Author } from "./Author";
 import { Info } from "./Info";
+
 import styled from "styled-components";
 
 interface ItemProps {
@@ -31,7 +33,6 @@ export function Item({
   image,
   author,
 }: ItemProps) {
-  const imagemUrl = config.gatewayUrl + image.url;
   const except = description.substring(0, 250) + "...";
   const { colorMode } = useColorMode();
 
@@ -45,7 +46,12 @@ export function Item({
       <Flex w="100%" m="0 auto">
         <Stack width="100%" borderRadius="lg">
           <FlexImage>
-            <Image src={imagemUrl} width="100%" borderRadius="lg" alt={title} />
+            <Image
+              src={getImageUrl(image.url)}
+              width="100%"
+              borderRadius="lg"
+              alt={title}
+            />
           </FlexImage>
 
           <Box px="6">

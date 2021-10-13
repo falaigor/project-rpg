@@ -1,9 +1,8 @@
-import config from "Configs/config.json";
 import { Box, Flex, Avatar, Text, Link } from "@chakra-ui/react";
 import ReactMarkdown from "react-markdown";
 
-import moment from "moment";
-import "moment/locale/pt-br";
+import { getImageUrl } from "Utils/urlImage";
+import { postDate } from "Utils/postDate";
 
 import styled from "styled-components";
 
@@ -25,9 +24,6 @@ export const Info = ({
   published_at,
   author,
 }: InfoProps) => {
-  const postDate = moment(published_at).locale("pt-br").fromNow();
-  const imageUrl = config.gatewayUrl + author.image.url;
-
   return (
     <>
       <Box
@@ -43,11 +39,16 @@ export const Info = ({
       <Box mt="4" mb="6">
         <Flex alignItems="center">
           <NewLink>
-            <Avatar size="lg" name={`Igor Santos`} src={imageUrl} mr="10px" />
+            <Avatar
+              size="lg"
+              name={`Igor Santos`}
+              src={getImageUrl(author.image.url)}
+              mr="10px"
+            />
             <div>
               <Text fontSize="1.2rem" mr="10px">{`Igor Santos`}</Text>
               <Text fontSize="0.8rem" color="gray.300">
-                {postDate}
+                {postDate(published_at)}
               </Text>
             </div>
           </NewLink>
