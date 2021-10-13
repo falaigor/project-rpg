@@ -79,11 +79,12 @@ export default function AuthorView() {
         <Stack>
           <Box width="100%" maxWidth={1000} mx="auto">
             <AuthorDetail {...author} />
-            <Flex>
-              {author.publications.map((publication) => (
-                <AuthorPublications key={publication.id} {...author} />
-              ))}
-            </Flex>
+
+            {author.publications.map((publication) => (
+              <Flex>
+                <AuthorPublications key={publication.id} {...publication} />
+              </Flex>
+            ))}
           </Box>
         </Stack>
       </Flex>

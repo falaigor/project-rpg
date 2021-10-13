@@ -1,11 +1,12 @@
 import { Box, Flex, Image, Stack, Link, useColorMode } from "@chakra-ui/react";
-import styled from "styled-components";
+import { AppRoute } from "Routes/routes";
+import { getImageUrl } from "Utils/urlImage";
 
-interface AuthorParams {
-  id: string;
-}
+import styled from "styled-components";
+import { Actions } from "Components/Feed/Actions";
+
 interface AuthorPublicationProps {
-  id: number;
+  author?: number;
   title: string;
   description: string;
   likes: number;
@@ -16,27 +17,16 @@ interface AuthorPublicationProps {
   };
 }
 
-interface AuthorProps {
-  id: number;
-  name: string;
-  username: string;
-  about: string;
-  image: {
-    url: string;
-  };
-  cover: {
-    url: string;
-  };
-  website: string;
-  facebook: string;
-  instagram: string;
-  twitter: string;
-  youtube: string;
-  publications: AuthorPublicationProps[];
-}
-
-export const AuthorPublications = ({ publications }: AuthorProps) => {
+export const AuthorPublications = ({
+  title,
+  description,
+  likes,
+  slug,
+  published_at,
+  image,
+}: AuthorPublicationProps) => {
   const { colorMode } = useColorMode();
+  const except = description.substring(0, 250) + "...";
 
   return (
     <Stack
@@ -48,11 +38,16 @@ export const AuthorPublications = ({ publications }: AuthorProps) => {
       <Flex w="100%" m="0 auto">
         <Stack width="100%" borderRadius="lg">
           <FlexImage>
-            {/* <Image src={imagemUrl} width="100%" borderRadius="lg" alt={title} /> */}
+            <Image
+              src={getImageUrl(image.url)}
+              width="100%"
+              borderRadius="lg"
+              alt={title}
+            />
           </FlexImage>
 
           <Box px="6">
-            <Link to={`/`}>
+            <Link to={`${AppRoute.Publication}/${slug}`}>
               <Box
                 mt="3"
                 fontWeight="semibold"
@@ -61,7 +56,7 @@ export const AuthorPublications = ({ publications }: AuthorProps) => {
                 lineHeight="tight"
                 isTruncated
               >
-                title
+                {title}
               </Box>
 
               <Box
@@ -70,13 +65,12 @@ export const AuthorPublications = ({ publications }: AuthorProps) => {
                 fontSize="0.9rem"
                 lineHeight="tight"
               >
-                {/* <p>{description}</p> */}
+                <p>{except}</p>
               </Box>
             </Link>
 
-            <Flex mt="6" justifyContent="space-between">
-              {/* <Author data={published_at} {...author} />
-              <Actions likes={likes} /> */}
+            <Flex mt="6" justifyContent="flex-end">
+              <Actions likes={likes} />
             </Flex>
           </Box>
         </Stack>
