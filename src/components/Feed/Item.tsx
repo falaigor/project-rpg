@@ -1,5 +1,7 @@
 import { Box, Flex, Image, Stack, useColorMode } from "@chakra-ui/react";
 import { getImageUrl } from "Utils/urlImage";
+import { AppRoute } from "Routes/routes";
+import { Link } from "react-router-dom";
 
 import { Actions } from "./Actions";
 import { Author } from "./Author";
@@ -47,12 +49,14 @@ export function Item({
       <Flex w="100%" m="0 auto">
         <Stack width="100%" borderRadius="lg">
           <FlexImage>
-            <Image
-              src={getImageUrl(image.url)}
-              width="100%"
-              borderRadius="lg"
-              alt={title}
-            />
+            <Link to={`${AppRoute.Publication}/${slug}`}>
+              <Image
+                src={getImageUrl(image.url)}
+                width="100%"
+                borderTopRadius="lg"
+                alt={title}
+              />
+            </Link>
           </FlexImage>
 
           <Box px="6">
@@ -70,6 +74,7 @@ export function Item({
 }
 
 const FlexImage = styled(Flex)`
+  a,
   img {
     width: 100%;
     height: 450px;

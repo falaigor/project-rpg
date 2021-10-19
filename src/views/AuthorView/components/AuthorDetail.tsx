@@ -92,21 +92,31 @@ export const AuthorDetail = ({
             />
             <Flex mt="20px">{about}</Flex>
             <Flex mt="20px" fontSize="1.6rem">
-              <SocialLink colorMode={colorMode}>
-                <RiFacebookBoxFill />
-              </SocialLink>
-              <SocialLink colorMode={colorMode}>
-                <RiTwitterFill />
-              </SocialLink>
-              <SocialLink colorMode={colorMode}>
-                <RiInstagramLine />
-              </SocialLink>
-              <SocialLink colorMode={colorMode}>
-                <RiYoutubeLine />
-              </SocialLink>
-              <SocialLink colorMode={colorMode}>
-                <RiGlobalLine />
-              </SocialLink>
+              {facebook && (
+                <SocialLink colorMode={colorMode} isExternal href={facebook}>
+                  <RiFacebookBoxFill />
+                </SocialLink>
+              )}
+              {twitter && (
+                <SocialLink colorMode={colorMode} isExternal href={twitter}>
+                  <RiTwitterFill />
+                </SocialLink>
+              )}
+              {instagram && (
+                <SocialLink colorMode={colorMode} isExternal href={instagram}>
+                  <RiInstagramLine />
+                </SocialLink>
+              )}
+              {youtube && (
+                <SocialLink colorMode={colorMode} isExternal href={youtube}>
+                  <RiYoutubeLine />
+                </SocialLink>
+              )}
+              {website && (
+                <SocialLink colorMode={colorMode} isExternal href={website}>
+                  <RiGlobalLine />
+                </SocialLink>
+              )}
             </Flex>
           </Box>
         </Stack>

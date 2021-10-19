@@ -2,9 +2,7 @@
 
 const path = require("path");
 
-module.exports = (env, argv) => {
-  const isDebug = argv["mode"] === "none";
-
+module.exports = () => {
   return {
     entry: ["babel-polyfill", "./src/index.js"],
     output: {
@@ -31,7 +29,7 @@ module.exports = (env, argv) => {
           exclude: /node_modules/,
           loader: "ts-loader",
           options: {
-            configFile: isDebug ? "tsconfig.debug.json" : "tsconfig.json",
+            configFile: "tsconfig.json",
           },
         },
       ],

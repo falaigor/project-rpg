@@ -1,10 +1,12 @@
-import { Box, Flex, Avatar, Text, Link } from "@chakra-ui/react";
+import { Box, Flex, Avatar, Text } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 
 import { getImageUrl } from "Utils/urlImage";
 import { getPostDate } from "Utils/postDate";
 
 import styled from "styled-components";
+import { AppRoute } from "Routes/routes";
 
 interface InfoProps {
   title: string;
@@ -12,6 +14,7 @@ interface InfoProps {
   published_at: string;
   author: {
     name: string;
+    username: string;
     image: {
       url: string;
     };
@@ -38,7 +41,7 @@ export const Info = ({
 
       <Box mt="4" mb="6">
         <Flex alignItems="center">
-          <NewLink>
+          <NewLink to={`${AppRoute.Author}/${author.username}`}>
             <Avatar
               size="lg"
               name={`Igor Santos`}

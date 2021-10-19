@@ -1,5 +1,4 @@
-import config from "Configs/config.json";
-const GATEWAY_BASE_URL = config.gatewayUrl;
+const GATEWAY_BASE_URL = process.env.REACT_APP_STRAPI_API_URL;
 
 export const PODCASTS_LIST = GATEWAY_BASE_URL + "/podcasts";
 export const LIVES_LIST = GATEWAY_BASE_URL + "/lives";

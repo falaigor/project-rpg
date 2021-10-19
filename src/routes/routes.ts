@@ -1,6 +1,8 @@
 export enum AppRoute {
-  Podcasts = "/podcasts",
-  Lives = "/lives",
+  Author = "/author",
   Contact = "/contact",
+  Dashboard = "/dashboard",
+  Lives = "/lives",
+  Podcasts = "/podcasts",
   Publication = "/publication",
 }

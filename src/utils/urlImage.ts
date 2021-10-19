@@ -1,3 +1,2 @@
-import config from "Configs/config.json";
-
-export const getImageUrl = (image: string) => config.gatewayUrl + image;
+export const getImageUrl = (image: string) =>
+  process.env.REACT_APP_STRAPI_API_URL + image;

@@ -1,6 +1,7 @@
 import { Avatar, Flex, Link as ChakraLink, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
+import { AppRoute } from "Routes/routes";
 import { getImageUrl } from "Utils/urlImage";
 import { getPostDate } from "Utils/postDate";
 
@@ -18,7 +19,7 @@ interface AuthorProps {
 export const Author = ({ name, username, image, data }: AuthorProps) => {
   return (
     <Flex alignItems="center">
-      <Link to={`/${username}`}>
+      <Link to={`${AppRoute.Author}/${username}`}>
         <NewLink>
           <Avatar
             size="sm"
