@@ -6,6 +6,7 @@
       "Components/*": ["./src/components/*"],
       "Configs/*": ["./src/configs/*"],
       "Hooks/*": ["./src/hooks/*"],
+      "Helper/*": ["./src/helper/*"],
       "Routes/*": ["./src/routes/*"],
       "Services/*": ["./src/services/*"],
       "Styles/*": ["./src/styles/*"],

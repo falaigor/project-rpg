@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import {
   Flex,
   Box,
@@ -13,19 +12,19 @@ import {
 } from "@chakra-ui/react";
 import { RiLogoutBoxLine } from "react-icons/ri";
 
-import { UserContext } from "Hooks/UserContext";
+type ProfileProps = {
+  username: string;
+  email: string;
+  logout: () => void;
+};
 
-export const Profile = () => {
-  const { data } = useContext(UserContext);
-
-  console.log(data);
-
+export const Profile = ({ logout, username, email }: ProfileProps) => {
   return (
     <Flex align="center">
       <Box mr="4" textAlign="right">
-        <Text>{data.username}</Text>
+        <Text>{username}</Text>
         <Text color="gray.300" fontSize="small">
-          {data.email}
+          {email}
         </Text>
       </Box>
 
@@ -34,10 +33,8 @@ export const Profile = () => {
           <Avatar as={Button} size="md" name="Igor Santos" />
         </MenuButton>
         <MenuList>
-          <MenuItem>Download</MenuItem>
           <Divider />
-
-          <MenuItem>
+          <MenuItem onClick={logout}>
             <RiLogoutBoxLine />
             Logout
           </MenuItem>

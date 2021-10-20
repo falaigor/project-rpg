@@ -7,7 +7,7 @@ import LivesView from "Views/LivesView/";
 import PodcastView from "Views/PodcastView/";
 import PublicationView from "Views/PublicationView/";
 
-import LoginRedirect from "Views/LoginRedirect";
+import { LoginRedirect } from "Views/LoginRedirect";
 import DashboardView from "Views/DashboardView/";
 
 export default function AppRoutes() {

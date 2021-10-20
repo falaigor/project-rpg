@@ -1,20 +1,13 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect } from "react";
 import { useHistory, useLocation, useParams } from "react-router-dom";
-
-import { UserContext } from "Hooks/UserContext";
+import { storageAvaliable } from "Utils/storage";
 
 const backendUrl = process.env.REACT_APP_STRAPI_API_URL;
 
-const LoginRedirect = () => {
-  const [text, setText] = useState("Loading...");
+export const LoginRedirect = () => {
   const location = useLocation();
   const params = useParams();
   const history = useHistory();
-
-  const [username, setUsername] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-
-  const { setData: setGlobalState } = useContext(UserContext);
 
   useEffect(() => {
     fetch(`${backendUrl}/auth/auth0/callback${location.search}`)
@@ -26,20 +19,15 @@ const LoginRedirect = () => {
       })
       .then((res) => res.json())
       .then((res) => {
-        setUsername(res.user.username);
-        setEmail(res.user.email);
-        setGlobalState({ username, email });
+        storageAvaliable("localStorage") &&
+          localStorage.setItem("user_info", JSON.stringify(res));
 
-        localStorage.setItem("jwt", res.jwt);
         setTimeout(() => history.push("/"), 0);
       })
       .catch((err) => {
         console.log(err);
-        setText("An error occurred, please see the developer console.");
       });
-  }, [history, location.search, params, email, setGlobalState, username]);
+  }, [history, location.search, params]);
 
-  return <p>{text}</p>;
+  return <p></p>;
 };
-
-export default LoginRedirect;

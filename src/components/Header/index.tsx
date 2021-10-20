@@ -1,22 +1,27 @@
 import { useState } from "react";
 
-import { Flex, Heading } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { Flex, Heading, Button } from "@chakra-ui/react";
 import { NotificationNav } from "./NotificationNav";
 import { Profile } from "./Profile";
 
-export function Header() {
-  const [isLogged] = useState(!!localStorage.getItem("jwt"));
+import { storageAvaliable } from "Utils/storage";
 
-  const LoginButton = () => (
-    <a
-      href={`${process.env.REACT_APP_STRAPI_API_URL}/connect/auth0`}
-      target="_blank"
-      rel="noreferrer"
-    >
-      Login
-    </a>
-  );
+export function Header() {
+  const jsonStorage =
+    storageAvaliable("localStorage") && localStorage.getItem("user_info");
+  const data = JSON.parse(jsonStorage || "{}");
+
+  const [isLogged, setIsLogged] = useState(!!data.jwt);
+
+  const logout = () => {
+    storageAvaliable("localStorage") && localStorage.removeItem("user_info");
+    setIsLogged(false);
+  };
+
+  const onClick = () => {
+    window.location.href = `${process.env.REACT_APP_STRAPI_API_URL}/connect/auth0`;
+  };
 
   return (
     <Flex width="100%" borderBottom="1px solid" borderColor="gray.600" mb={10}>
@@ -38,7 +43,15 @@ export function Header() {
 
         <Flex align="center" ml="auto">
           <NotificationNav />
-          {isLogged ? <Profile /> : <LoginButton />}
+          {isLogged ? (
+            <Profile
+              logout={logout}
+              username={data.user.username}
+              email={data.user.email}
+            />
+          ) : (
+            <Button onClick={onClick}>Login</Button>
+          )}
         </Flex>
       </Flex>
     </Flex>

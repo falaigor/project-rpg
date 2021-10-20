@@ -6,6 +6,7 @@ module.exports = {
       Components: path.resolve(__dirname, "./src/components"),
       Configs: path.resolve(__dirname, "./src/configs"),
       Hooks: path.resolve(__dirname, "./src/hooks"),
+      Helper: path.resolve(__dirname, "./src/helper"),
       Routes: path.resolve(__dirname, "./src/routes"),
       Services: path.resolve(__dirname, "./src/services"),
       Styles: path.resolve(__dirname, "./src/styles"),

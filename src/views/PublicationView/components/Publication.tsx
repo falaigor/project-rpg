@@ -62,9 +62,6 @@ export const Publication = () => {
     getPublication();
   }, [params.id]);
 
-  console.log(!publication);
-  console.log("!publication");
-
   if (!publication) {
     return (
       <Flex w="100%" m="0 auto">

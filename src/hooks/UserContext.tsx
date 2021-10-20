@@ -1,6 +1,7 @@
 import React, { createContext, useState } from "react";
 
 type UserType = {
+  jwt: string;
   username: string;
   email: string;
 };
@@ -12,6 +13,7 @@ type PropsUserContext = {
 
 const DEFAULT_VALUE = {
   data: {
+    jwt: "",
     username: "",
     email: "",
   },
