@@ -1,28 +1,8 @@
-import { useState } from "react";
-
 import { Link } from "react-router-dom";
-import { Flex, Heading, Button } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import { NotificationNav } from "./NotificationNav";
-import { Profile } from "./Profile";
-
-import { storageAvaliable } from "Utils/storage";
 
 export function Header() {
-  const jsonStorage =
-    storageAvaliable("localStorage") && localStorage.getItem("user_info");
-  const data = JSON.parse(jsonStorage || "{}");
-
-  const [isLogged, setIsLogged] = useState(!!data.jwt);
-
-  const logout = () => {
-    storageAvaliable("localStorage") && localStorage.removeItem("user_info");
-    setIsLogged(false);
-  };
-
-  const onClick = () => {
-    window.location.href = `${process.env.REACT_APP_STRAPI_API_URL}/connect/auth0`;
-  };
-
   return (
     <Flex width="100%" borderBottom="1px solid" borderColor="gray.600" mb={10}>
       <Flex
@@ -43,15 +23,6 @@ export function Header() {
 
         <Flex align="center" ml="auto">
           <NotificationNav />
-          {isLogged ? (
-            <Profile
-              logout={logout}
-              username={data.user.username}
-              email={data.user.email}
-            />
-          ) : (
-            <Button onClick={onClick}>Login</Button>
-          )}
         </Flex>
       </Flex>
     </Flex>

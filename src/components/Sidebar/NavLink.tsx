@@ -5,6 +5,7 @@ import {
   LinkProps as ChakraLinkPorps,
 } from "@chakra-ui/react";
 import { ElementType } from "react";
+import { useRouteMatch } from "react-router-dom";
 import { ActiveLink } from "./ActiveLink";
 
 interface NavLinkProps extends ChakraLinkPorps {
@@ -14,11 +15,18 @@ interface NavLinkProps extends ChakraLinkPorps {
 }
 
 export function NavLink({ icon, children, href, ...rest }: NavLinkProps) {
+  const { path } = useRouteMatch();
+  let isActive = false;
+
+  if (path === href) {
+    isActive = true;
+  }
+
   return (
     <ActiveLink href={href}>
       <ChakraLink display="flex" align="center" {...rest}>
         <Icon as={icon} fontSize="16" />
-        <Text ml="4" fontWeight="medium">
+        <Text ml="2" fontWeight={isActive ? "semibold" : "lighter"}>
           {children}
         </Text>
       </ChakraLink>
