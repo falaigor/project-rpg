@@ -1,49 +1,18 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { LIVES_LIST } from "Services/gatewayRoutes";
-import { Box, Stack, Heading, Text, Flex } from "@chakra-ui/react";
-import { LiveItem } from "./components/Item";
+import { Stack, Flex } from "@chakra-ui/react";
+
 import { Header } from "Components/Header";
 import { Sidebar } from "Components/Sidebar";
-
-interface LivesProps {
-  id: number;
-  slug: string;
-  title: string;
-  description: string;
-  image: {
-    url: string;
-  };
-}
+import { FeedLives } from "Components/FeedLives";
 
 export default function LivesView() {
-  const [lives, setLives] = useState<LivesProps[]>([]);
-
-  useEffect(() => {
-    axios.get(LIVES_LIST).then((response) => {
-      setLives(response.data);
-    });
-  }, []);
-
   return (
-    <Flex direction="column" h="100vh">
+    <Flex px="10" direction="column" h="100vh">
       <Header />
-      <Flex width="100%" maxWidth={1280} m="0 auto">
+
+      <Stack width="100%" maxWidth={1280} m="0 auto">
         <Sidebar />
-
-        <Stack>
-          <Box pb="10">
-            <Text fontSize="xl">Lista de</Text>
-            <Heading>Lives</Heading>
-          </Box>
-
-          <Box width="100%" maxWidth={1000} mx="auto">
-            {lives.map((live) => (
-              <LiveItem key={live.id} {...live} />
-            ))}
-          </Box>
-        </Stack>
-      </Flex>
+        <FeedLives />
+      </Stack>
     </Flex>
   );
 }
